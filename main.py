@@ -39,17 +39,17 @@ def load_source(path: str) -> Dict:
         return json.loads(source.read())
 
 
-def get_search_list(soup, source_scripe) -> List:
-    for scrip in source_scripe:
+def get_search_list(soup, source_scrip) -> List:
+    for scrip in source_scrip:
         soup = methodcaller(
             scrip['name'], *scrip['args'], **scrip['kwargs'])(soup)
         # print(soup)
     return soup
 
 
-def get_search_item(soup, source_scripe) -> Dict:
+def get_search_item(soup, source_scrip) -> Dict:
     return_dict = {}
-    for item in source_scripe:
+    for item in source_scrip:
         item_soup = copy(soup)
         for scrip in item['scrip']:
             item_soup = methodcaller(
