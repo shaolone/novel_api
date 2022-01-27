@@ -1,40 +1,31 @@
-from operator import methodcaller
-from typing import *
-from typing_extensions import *
-from bs4 import BeautifulSoup
-from fastapi import FastAPI
-from copy import *
-import os
+from copy import copy
 import json
+from typing import Dict, List
+from pip import main
 import requests
-app = FastAPI()
+from bs4 import BeautifulSoup
+from operator import methodcaller
+from pprint import pprint as print
 
-
-@app.get('/')
-def get_root():
-    return "Hello Novel Api"
-
-
-@app.get("/get_source_list")
-def get_source_list():
-    return os.listdir("./source")
-
-
-@app.get("/search/{search_key}")
 def search(search_key: str, source_name):
     source = load_source(f"./source/{source_name}.json")
     search_url = source['search']['url'].replace("{search_key}", search_key)
     response = requests.get(search_url)
     soup = BeautifulSoup(response.text, 'html.parser')
+
     search_list = get_search_list(
         soup, source['search']['get_search_list_scrip'])
     return_list = []
     for soup in search_list:
-        return_list.append(get_search_item(soup, source['search']['get_search_item']))
-    return return_list
+        return_list.append(get_search_item(
+            soup, source['search']['get_search_item']))
 
 
-def load_source(path: str) -> Dict:
+
+    
+    return soup
+
+def load_source(path: str) -> dict:
     with open(path, 'r+', encoding='UTF-8') as source:
         return json.loads(source.read())
 
@@ -54,6 +45,9 @@ def get_search_item(soup, source_scripe) -> Dict:
         for scrip in item['scrip']:
             item_soup = methodcaller(
                 scrip['name'], *scrip['args'], **scrip['kwargs'])(item_soup)
-            #print(item_soup)
+            print(item_soup)
         return_dict[f"{item['name']}"] = item_soup
     return return_dict
+
+if __name__ =="__main__":
+    search('黎明',source_name='source0')

@@ -1,0 +1,116 @@
+{
+    "name": "xquge_net",
+    "version": "0.0.1",
+    "description": "",
+    "domain": "https://www.xquge.net",
+    "search": {
+        "url": "https://www.xquge.net/search?keyword={search_key}",
+        "get_search_list_scrip": [{
+                "name": "find",
+                "args": [
+                    "ul"
+                ],
+                "kwargs": {
+                    "class": "rank_ullist"
+                }
+            },
+            {
+                "name": "find_all",
+                "args": [
+                    "li"
+                ],
+                "kwargs": {}
+            }
+        ],
+        "get_search_item": [{
+                "name": "book_name",
+                "scrip": [{
+                        "name": "find",
+                        "args": [
+                            "div"
+                        ],
+                        "kwargs": {
+                            "class": "rank_bkname"
+                        }
+                    },
+                    {
+                        "name": "get_text",
+                        "args": [],
+                        "kwargs": {}
+                    }
+                ]
+            },
+            {
+                "name": "book_url",
+                "scrip": [{
+                        "name": "find",
+                        "args": [
+                            "div"
+                        ],
+                        "kwargs": {
+                            "class": "rank_bkname"
+                        }
+                    },
+                    {
+                        "name": "find",
+                        "args": [
+                            "a"
+                        ],
+                        "kwargs": {}
+                    },
+                    {
+                        "name": "get",
+                        "args": [
+                            "href"
+                        ],
+                        "kwargs": {}
+                    }
+                ]
+            },
+            {
+                "name": "book_author",
+                "scrip": [{
+                        "name": "find",
+                        "args": [
+                            "span"
+                        ],
+                        "kwargs": {
+                            "class": "author"
+                        }
+                    },
+                    {
+                        "name": "get_text",
+                        "args": [],
+                        "kwargs": {}
+                    }
+                ]
+            },
+            {
+                "name": "book_details",
+                "scrip": [{
+                        "name": "find",
+                        "args": [
+                            "div"
+                        ],
+                        "kwargs": {
+                            "class": "rank_bkbrief"
+                        }
+                    },
+                    {
+                        "name": "get_text",
+                        "args": [],
+                        "kwargs": {}
+                    },
+                    {
+                        "name": "replace",
+                        "args": [
+                            " ",
+                            ""
+                        ],
+                        "kwargs": {}
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "name": "source0",
+    "version": "0.0.1",
+    "description": "",
+    "domain": "https://www.xquge.net",
+    "search": {
+        "url": "https://www.xquge.net/search?keyword={search_key}",
+        "get_search_list_scrip": [{
+            "name": "find_all",
+            "args": [
+                "li"
+            ],
+            "kwargs": {}
+        }],
+        "get_search_item": [{
+                "name": "find",
+                "args": [
+                    "ul"
+                ],
+                "kwargs": {
+                    "class": "rank_ullist"
+                }
+            },
+            {
+                "name": "find_all",
+                "args": [
+                    "div"
+                ],
+                "kwargs": {
+                    "class": "rank_bkname"
+                }
+            }
+        ]
+    }
+}
