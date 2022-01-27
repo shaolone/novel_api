@@ -1,0 +1,10 @@
+{
+    "name": "source0",
+    "version": "0.0.1",
+    "description": "",
+    "domain": "https://www.xquge.net",
+    "search": {
+        "url": "https://www.xquge.net/search?keyword={search_key}",
+        "get_search_list_scrip": "find_all('li')"
+    }
+}
