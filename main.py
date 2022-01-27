@@ -7,11 +7,15 @@ from copy import *
 import os
 import json
 import requests
+
+
+#TODO 补全注释
 app = FastAPI()
 
 
 @app.get('/')
 def get_root():
+    #TODO 跳转文档页面
     return "Hello Novel Api"
 
 
@@ -22,6 +26,7 @@ def get_source_list():
 
 @app.get("/search/{search_key}")
 def search(search_key: str, source_name):
+    #TODO 多线程遍历书源搜索
     source = load_source(f"./source/{source_name}.json")
     search_url = source['search']['url'].replace("{search_key}", search_key)
     response = requests.get(search_url)
@@ -31,7 +36,15 @@ def search(search_key: str, source_name):
     return_list = []
     for soup in search_list:
         return_list.append(get_search_item(soup, source['search']['get_search_item']))
+    #TODO 异常处理
     return return_list
+
+#TODO 获取小说目录
+
+
+
+#TODO 获取章节内容
+
 
 
 def load_source(path: str) -> Dict:
