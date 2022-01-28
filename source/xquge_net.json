@@ -22,7 +22,7 @@
                 "kwargs": {}
             }
         ],
-        "get_search_item": [{
+        "get_search_item_scrip": [{
                 "name": "book_name",
                 "scrip": [{
                         "name": "find",
@@ -112,5 +112,92 @@
                 ]
             }
         ]
+    },
+    "catalogue": {
+        "get_catalogue_list_scrip": [{
+                "name": "find_all",
+                "args": [
+                    "ul"
+                ],
+                "kwargs": {
+                    "class": "catelog_list"
+                }
+            },
+            {
+                "name": "pop",
+                "args": [
+                    1
+                ],
+                "kwargs": {}
+            },
+            {
+                "name": "find_all",
+                "args": [
+                    "li"
+                ],
+                "kwargs": {}
+            }
+        ],
+        "get_catalogue_item_scrip": [{
+                "name": "chapter_name",
+                "scrip": [{
+                        "name": "find",
+                        "args": [
+                            "a"
+                        ],
+                        "kwargs": {
+                            "class": ""
+                        }
+                    },
+                    {
+                        "name": "get_text",
+                        "args": [],
+                        "kwargs": {}
+                    }
+                ]
+            },
+            {
+                "name": "chapter_url",
+                "scrip": [{
+                        "name": "find",
+                        "args": [
+                            "a"
+                        ],
+                        "kwargs": {}
+                    },
+                    {
+                        "name": "get",
+                        "args": [
+                            "href"
+                        ],
+                        "kwargs": {}
+                    }
+                ]
+            }
+        ]
+    },
+    "chapter": {
+        "get_paragraph_list_scrip": [{
+                "name": "find",
+                "args": [
+                    "div"
+                ],
+                "kwargs": {
+                    "id": "content"
+                }
+            },
+            {
+                "name": "find_all",
+                "args": [
+                    "p"
+                ],
+                "kwargs": {}
+            }
+        ],
+        "get_paragraph_scrip": [{
+            "name": "get_text",
+            "args": [],
+            "kwargs": {}
+        }]
     }
 }
