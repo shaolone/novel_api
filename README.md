@@ -21,7 +21,7 @@ novel api 一个小说接口api服务
 [uvicorn](https://github.com/encode/uvicorn) 是一个闪电般快速的ASGI服务器，基于uvloop和httptools构建。
 
     uvicorn main:app --reload
-region i { information 关于 uvicorn main:app --reload 命令......
+region { 关于 uvicorn main:app --reload 命令...
 
 uvicorn main:app 命令含义如下:
 
@@ -30,4 +30,4 @@ uvicorn main:app 命令含义如下:
 - app：在 main.py 文件中通过 app = FastAPI() 创建的对象。
 
 - --reload：让服务器在更新代码后重新启动。仅在开发时使用该选项。
-}
+} region 关于 uvicorn main:app --reload 命令...
